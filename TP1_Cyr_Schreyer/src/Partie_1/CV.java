@@ -7,6 +7,7 @@ public class CV {
 	private static String formation;
 	private static int nbAnnee;
 	private static String[] CompetenceMike = { "Programmeur", "Tester des programmes", "Modelisation" };
+	private static String[] CompetenceNathan = { "Développeur web", "Musicien", "Base de données" };
 	private static String Attente;
 
 	public static void afficher(String nom, String prenom, String formation, int nbAnnee, String Attente) {
@@ -21,7 +22,7 @@ public class CV {
 
 		System.out.println("Bienvenue chez Barette!");
 		afficher("Schreyer", "Michel", "DEC en programmation en préparation", 4, "Passer le cours");
-		
+		afficher("Cyr", "Nathan", "Informaticien", 21, "passer le cours");
 	}
 
 }
