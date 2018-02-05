@@ -12,9 +12,9 @@ public class CV {
 
 	public static void afficher(String nom, String prenom, String formation, int nbAnnee, String Attente) {
 
-		System.out.println("\nAffichage des CV:" + "\nNom: " + nom + "\nPrénom: " + prenom + "\nFormation: " + formation
-				+ "\nNombre d'année d'expérience: " + nbAnnee + "\nCompétences: " + CompetenceMike[0] + ", "
-				+ CompetenceMike[1] + ", " + CompetenceMike[2] + "\nAttente pour le cours 4B4: " + Attente);
+		System.out.println("\n\nAffichage des CV:" + "\n\nNom: \t\t\t\t" +nom + "\nPrénom: \t\t\t" + prenom + "\nFormation: \t\t\t" + formation
+				+ "\nNombre d'année d'expérience: \t" + nbAnnee + "\nCompétences: \t\t\t" + CompetenceMike[0] + ", "
+				+ CompetenceMike[1] + ", " + CompetenceMike[2] + "\nAttente pour le cours 4B4: \t" + Attente);
 
 	}
 
