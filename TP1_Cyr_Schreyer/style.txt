@@ -1,0 +1,3 @@
+1. Mettre les noms et prénoms des programmeur au début des fichiers java.
+2. S'assurer d'indenter le code avec Ctrl+Shift+F dans eclipse.
+3. Nom des fichiers sans accents.
