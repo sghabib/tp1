@@ -1,3 +1,4 @@
+//Programmation: Nathan Cyr et Michel Schreyer
 package Partie_2;
 
 import java.io.BufferedReader;
@@ -13,8 +14,8 @@ public class Commandes {
 		BufferedReader BufferFic = null;
 		FileReader LectureFic = null;
 		String TabClient[] = null;
-		String TabPlats[] = null;
-		String TabCommandes[] = null;
+		String TabPlats[][] = null;
+		String TabCommandes[][] = null;
 
 		try {
 
@@ -25,6 +26,15 @@ public class Commandes {
 
 			while ((sCurrentLine = BufferFic.readLine()) != null) {
 				System.out.println(sCurrentLine);
+				/*for(int i = 0; sCurrentLine != "Plats"; i++) {
+					 TabClient[i] = sCurrentLine;
+				}
+				for(int j = 0; sCurrentLine != "Commandes"; j++) {
+					 TabClient[j] = sCurrentLine;
+				}
+				for(int k = 0; sCurrentLine != "Fin"; k++) {
+					 TabClient[k] = sCurrentLine;
+				}*/
 			}
 
 		} catch (IOException e) {
@@ -47,9 +57,6 @@ public class Commandes {
 			}
 		}
 		
-		for (int i = 0; i < TabCommandes.length; i++) {
-			
-		}
 		
 		
 
