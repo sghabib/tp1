@@ -1,49 +1,41 @@
 //Programmation: Nathan Cyr et Michel Schreyer
 package Partie_2;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Commandes {
 
-	private static final String FILENAME = "listeCommandes.txt";
+	private static final String fichier = "listeCommandes.txt";
+	public static String[][] tabFactures;
 
 	public static void main(String[] args) {
 
 		BufferedReader BufferFic = null;
 		FileReader LectureFic = null;
-		String tabClient[] = null;
+		String tabClients[] = null;
 		String tabPlats[][] = null;
 		String tabCommandes[][] = null;
 
 		try {
 
-			LectureFic = new FileReader(FILENAME);
+			LectureFic = new FileReader(fichier);
 			BufferFic = new BufferedReader(LectureFic);
 
 			String sCurrentLine;
 
+			ArrayList<String> liste = new ArrayList<>();
 			while ((sCurrentLine = BufferFic.readLine()) != null) {
-				
-				
-					System.out.println(sCurrentLine);
-				
-				
-				
-				/*for(int i = 0; sCurrentLine != "Plats"; i++) {
-					 tabClient[i] = sCurrentLine;
-				}
-				for(int j = 0; sCurrentLine != "Commandes"; j++) {
-					 tabClient[j] = sCurrentLine;
-				}
-				for(int k = 0; sCurrentLine != "Fin"; k++) {
-					 tabClient[k] = sCurrentLine;
-				}*/
+				liste.add(sCurrentLine);
+
 			}
-			
-			
-			
+			String[] arr = new String[liste.size()];
+			arr = liste.toArray(arr);
+			for (String s : arr)
+				System.out.println(s);
 
 		} catch (IOException e) {
 
@@ -64,9 +56,6 @@ public class Commandes {
 				System.out.println("Fichier inexistant");
 			}
 		}
-		
-		
-		
 
 	}
 }
