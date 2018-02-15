@@ -13,9 +13,9 @@ public class Commandes {
 
 		BufferedReader BufferFic = null;
 		FileReader LectureFic = null;
-		String TabClient[] = null;
-		String TabPlats[][] = null;
-		String TabCommandes[][] = null;
+		String tabClient[] = null;
+		String tabPlats[][] = null;
+		String tabCommandes[][] = null;
 
 		try {
 
@@ -25,17 +25,25 @@ public class Commandes {
 			String sCurrentLine;
 
 			while ((sCurrentLine = BufferFic.readLine()) != null) {
-				System.out.println(sCurrentLine);
+				
+				
+					System.out.println(sCurrentLine);
+				
+				
+				
 				/*for(int i = 0; sCurrentLine != "Plats"; i++) {
-					 TabClient[i] = sCurrentLine;
+					 tabClient[i] = sCurrentLine;
 				}
 				for(int j = 0; sCurrentLine != "Commandes"; j++) {
-					 TabClient[j] = sCurrentLine;
+					 tabClient[j] = sCurrentLine;
 				}
 				for(int k = 0; sCurrentLine != "Fin"; k++) {
-					 TabClient[k] = sCurrentLine;
+					 tabClient[k] = sCurrentLine;
 				}*/
 			}
+			
+			
+			
 
 		} catch (IOException e) {
 
