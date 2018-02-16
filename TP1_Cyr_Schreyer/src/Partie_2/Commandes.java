@@ -16,9 +16,16 @@ public class Commandes {
 
 		BufferedReader BufferFic = null;
 		FileReader LectureFic = null;
-		String tabClients[] = null;
-		String tabPlats[][] = null;
-		String tabCommandes[][] = null;
+		String tabClients[] = new String[15];
+		String tabPlats[] = new String[15];
+		String tabCommandes[] = new String[15];
+		int compteurClient = 0;
+		int compteurPlats = 0;
+		int compteurCommandes = 0;
+
+		boolean debutClient = false;
+		boolean debutPlats = false;
+		boolean debutCommandes = false;
 
 		try {
 
@@ -27,15 +34,36 @@ public class Commandes {
 
 			String sCurrentLine;
 
-			ArrayList<String> liste = new ArrayList<>();
 			while ((sCurrentLine = BufferFic.readLine()) != null) {
-				liste.add(sCurrentLine);
-
+				if (sCurrentLine.contains("Clients")) {
+					debutClient = true;
+				} else if (sCurrentLine.contains("Plats")) {
+					debutClient = false;
+					debutPlats = true;
+				} else if (sCurrentLine.contains("Commandes")) {
+					debutPlats = false;
+					debutCommandes = true;
+				}
+				if (debutClient) {
+					tabClients[compteurClient] = sCurrentLine;
+					compteurClient++;
+				}
+				
+				if(debutPlats && !sCurrentLine.contains("Plats")) {
+					tabPlats[compteurPlats] = sCurrentLine;
+					compteurPlats++;
+				}
+				
+				if(debutCommandes && sCurrentLine.contains("Commanmdes")) {
+					tabCommandes[compteurCommandes] = sCurrentLine;
+					compteurCommandes++;
+				}
+					
 			}
-			String[] arr = new String[liste.size()];
-			arr = liste.toArray(arr);
-			for (String s : arr)
-				System.out.println(s);
+			for(int i = 0; i < tabClients.length; i++) {
+				System.out.println(tabClients[i]);
+			}
+			
 
 		} catch (IOException e) {
 
