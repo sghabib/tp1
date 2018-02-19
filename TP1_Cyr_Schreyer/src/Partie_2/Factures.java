@@ -37,16 +37,18 @@ public class Factures {
 
 			System.out.println(Main.tabClients[i] + " " + prix + "$");
 
-			/*
-			 * PrintWriter writer;
-			 * 
-			 * 
-			 * 
-			 * try { writer = new PrintWriter("Facture.txt", "UTF-8");
-			 * writer.println("Bienvenue chez Barette!"); writer.println("Factures:");
-			 * writer.close(); } catch (FileNotFoundException e) { e.printStackTrace(); }
-			 * catch (UnsupportedEncodingException e) { e.printStackTrace(); }
-			 */
+			PrintWriter writer;
+
+			try {
+				writer = new PrintWriter("Facture.txt", "UTF-8");
+				writer.println("Bienvenue chez Barette!");
+				writer.println("Factures:");
+				writer.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 
 		}
 	}
