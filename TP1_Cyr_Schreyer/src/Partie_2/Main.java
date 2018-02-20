@@ -1,4 +1,5 @@
 //Programmation: Nathan Cyr et Michel Schreyer
+
 package Partie_2;
 
 import java.io.BufferedReader;
@@ -7,89 +8,86 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Main {
 
-	private static final String fichier = "listeCommandes.txt";
-	public static int compteurClient = 0;
-	public static int compteurPlats = 0;
-	public static int compteurCommandes = 0;
-
-	public static boolean debutClient = false;
-	public static boolean debutPlats = false;
-	public static boolean debutCommandes = false;
-
-	public static String tabClients[] = new String[20];
-	public static Plats tabPlats[] = new Plats[20];
-	public static Commandes tabCommandes[] = new Commandes[20];
-
 	public static void main(String[] args) {
+
+		final String fichier = "listeCommandes.txt";
 
 		BufferedReader BufferFic = null;
 		FileReader LectureFic = null;
+		String Ligne;
+
+		ArrayList<String> clients = new ArrayList<String>();
+		Hashtable<String, Plats> plats = new Hashtable<String, Plats>();
+		ArrayList<Commande> commande = new ArrayList<Commande>();
 
 		try {
 
 			LectureFic = new FileReader(fichier);
 			BufferFic = new BufferedReader(LectureFic);
 
-			String sCurrentLine;
+			Ligne = BufferFic.readLine();
 
-			while ((sCurrentLine = BufferFic.readLine()) != null) {
-				if (sCurrentLine.contains("Clients")) {
-					debutClient = true;
-				} else if (sCurrentLine.contains("Plats")) {
-					debutClient = false;
-					debutPlats = true;
-				} else if (sCurrentLine.contains("Commandes")) {
-					debutPlats = false;
-					debutCommandes = true;
-				}
-				if (debutClient) {
-					tabClients[compteurClient] = sCurrentLine;
-					compteurClient++;
-				}
+			while (!(Ligne = BufferFic.readLine()).equals("Plats :")) {
 
-				if (debutPlats && !sCurrentLine.contains("Plats")) {
-					String[] plats = sCurrentLine.split(" ");
-					Plats platTemporaire = new Plats(Double.parseDouble(plats[1]), plats[0]);
-					tabPlats[compteurPlats] = platTemporaire;
-					compteurPlats++;
-				}
-
-				if (debutCommandes && sCurrentLine.contains("Commandes") && !sCurrentLine.contains("Fin")) {
-					try {
-						String[] commandes = sCurrentLine.split(" ");
-						Commandes commandeTemporaire = new Commandes(commandes[0], commandes[1],
-								Integer.parseInt(commandes[2]));
-						tabCommandes[compteurCommandes] = commandeTemporaire;
-						compteurCommandes++;
-					} catch (Exception formatInvalide) {
-
-						System.out.println("Le fichier ne respecte pas le format demandé!");
-
-					}
-
-				}
+				clients.add(Ligne);
 			}
-		} catch (IOException e) {
 
-			System.out.println("Fichier inexistant");
+			while (!(Ligne = BufferFic.readLine()).equals("Commandes :")) {
 
-		} finally {
+				String[] LigneSpliter = Ligne.split(" ");
+				plats.put(LigneSpliter[0], new Plats(LigneSpliter[0], Double.parseDouble(LigneSpliter[1])));
+			}
 
-			try {
+			while (!(Ligne = BufferFic.readLine()).equals("Fin")) {
 
-				if (BufferFic != null)
-					BufferFic.close();
+				String[] LigneSpliter = Ligne.split(" ");
 
-				if (LectureFic != null)
+				if (LigneSpliter.length == 3) {
+					commande.add(new Commande(LigneSpliter[0], plats.get(LigneSpliter[1]),
+							Integer.parseInt(LigneSpliter[2])));
+
+				} else {
+
 					LectureFic.close();
+					System.out.println("Le fichier ne respecte pas le format demandé !");
 
-			} catch (IOException ex) {
-
-				System.out.println("Fichier inexistant");
+				}
 			}
+			LectureFic.close();
+		} catch (Exception err) {
+
+			System.out.println(err);
+
+		}
+
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("Facture.txt", "UTF-8");
+			writer.println("Bienvenue chez Barette!");
+			writer.println("Factures:");
+			for (String client : clients) {
+				double total = 0;
+
+				for (Commande commandes : commande) {
+
+					if (commandes.getClient().equals(client)) {
+						total += commandes.getQuantiteCommander() * commandes.getPlat().getPrix();
+					}
+				}
+
+				writer.println(client + " " + total + "$");
+			}
+
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 
 	}

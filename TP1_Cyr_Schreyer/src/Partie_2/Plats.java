@@ -1,28 +1,29 @@
+//Programmation: Nathan Cyr et Michel Schreyer
+
 package Partie_2;
 
 public class Plats {
-	private double prixCommande;
-	private String clientCommande;
 
-	public Plats(double prixCommande, String clientCommande) {
-		this.prixCommande = prixCommande;
-		this.clientCommande = clientCommande;
+	private String PlatMenu;
+	private double PrixPlat;
+
+	public Plats(String PlatCommander, double PrixCommande) {
+
+		this.PlatMenu = PlatCommander;
+		this.PrixPlat = PrixCommande;
+
 	}
 
-	public double getPrixCommande() {
-		return prixCommande;
+	public double getPrix() {
+
+		return this.PrixPlat;
+
 	}
 
-	public void setPrixCommande(double prixCommande) {
-		this.prixCommande = prixCommande;
-	}
+	public String getPlat() {
 
-	public String getClientCommande() {
-		return clientCommande;
-	}
+		return this.PlatMenu;
 
-	public void setClientCommande(String clientCommande) {
-		this.clientCommande = clientCommande;
 	}
 
 }
