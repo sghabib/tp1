@@ -1,0 +1,9 @@
+Retour sur la partie 1
+------------------------
+
+- Le travail doit être partagé entre les coéquipiers.
+- Pourquoi initier les tableaux de compétences dans les attributs de la classe CV. 
+- Puis pourquoi y en a deux tableaux de compétences pour chacun des coéquipiers !!!"	
+- Tout le travail est réalisé par Schreyer ! C'est quoi la tâche de Nathan dans cette partie 1		
+- Constructeur non créé
+- Programme ne s'execute pas sur master											
